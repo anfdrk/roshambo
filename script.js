@@ -48,13 +48,13 @@ function playRound (playerSelection, computerSelection) {
 }
 
 function game() {
-  for (let i = 0; i < 5; i++) {
+  while (scorePlayer < 5 && scoreComputer < 5) {
     playRound();
   }
   console.log(finalMessage());
 }
 
 function finalMessage() {
-  const winner = (scorePlayer > scoreComputer) ? 'Computer' : 'You';
-  return `${winner} win the game`
+  const winner = (scorePlayer > scoreComputer) ? 'You' : 'Computer';
+  return `${winner} win the game`;
 }
