@@ -1,8 +1,12 @@
+let scorePlayer = 0
+let scoreComputer = 0
+const buttons = document.querySelectorAll('button')
 
-let scorePlayer = 0;
-let scoreComputer = 0;
-
-game();
+buttons.forEach(function(button) {
+  button.addEventListener('click', function(e) {
+    playRound(e.target.className)
+  })
+})
 
 function getComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3);
@@ -16,32 +20,26 @@ function getComputerChoice() {
   }
 }
 
-function getPlayerChoice () {
-  const choise = prompt('Choose your weapon');
-  return choise.toLowerCase();
-}
-
-function playRound (playerSelection, computerSelection) {
-  playerSelection = getPlayerChoice();
-  computerSelection = getComputerChoice();
-  if (playerSelection === computerSelection) {
+function playRound (playerChoice) {
+  const computerSelection = getComputerChoice();
+  if (playerChoice === computerSelection) {
     console.log(`It's a tie!`)
-  } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+  } else if (playerChoice === 'rock' && computerSelection === 'scissors') {
     scorePlayer++
     console.log('You won! Rock beats scissors')
-  } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+  } else if (playerChoice === 'paper' && computerSelection === 'rock') {
     scorePlayer++
     console.log('You won! Paper beats rock')
-  } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+  } else if (playerChoice === 'scissors' && computerSelection === 'paper') {
     scorePlayer++
     console.log('You won! Scissors beats paper')
-  } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+  } else if (playerChoice === 'scissors' && computerSelection === 'rock') {
     scoreComputer++
     console.log('You lost! Rock beats scissors')
-  } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+  } else if (playerChoice === 'paper' && computerSelection === 'scissors') {
     scoreComputer++
     console.log('You lost! Scissors beats paper')
-  } else if (playerSelection === 'rock' && computerSelection === 'paper') {
+  } else if (playerChoice === 'rock' && computerSelection === 'paper') {
     scoreComputer++
     console.log('You lost! Paper beats rock')
   }
@@ -57,4 +55,9 @@ function game() {
 function finalMessage() {
   const winner = (scorePlayer > scoreComputer) ? 'You' : 'Computer';
   return `${winner} win the game`;
+}
+
+
+function print(x) {
+  console.log(x)
 }
