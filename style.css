@@ -7,4 +7,11 @@ button {
   padding: 10px;
   margin: 0 10px;
   font-size: 2em;
+  color: #1f2937;
+}
+
+#result, #score, #final {
+  margin: 20px 10px;
+  color: aliceblue;
+  font-size: 1.5em;
 }
